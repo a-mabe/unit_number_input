@@ -40,6 +40,12 @@ class UnitNumberInput extends StatefulWidget {
   /// Callback function called when the form field is saved.
   final FormFieldSetter<int>? onSaved;
 
+  /// Focus node for the minutes input field
+  final FocusNode? minutesFocusNode;
+
+  /// Focus node for the seconds input field
+  final FocusNode? secondsFocusNode;
+
   const UnitNumberInput({
     super.key,
     required this.controller,
@@ -53,6 +59,8 @@ class UnitNumberInput extends StatefulWidget {
     this.valueRequired = true,
     this.prefill = true,
     this.onSaved,
+    this.minutesFocusNode,
+    this.secondsFocusNode,
   });
 
   @override
@@ -180,6 +188,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
             maxDigits: widget.maxMinutesDigits,
             decoration: widget.minutesDecoration,
             onChanged: _updateSecondsFromControllers,
+            focusNode: widget.minutesFocusNode,
             maxValue: 99,
           ),
         if (minutesMode)
@@ -201,6 +210,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
           maxDigits: minutesMode ? 2 : widget.maxSecondsDigits,
           decoration: widget.secondsDecoration,
           onChanged: _updateSecondsFromControllers,
+          focusNode: widget.secondsFocusNode,
           maxValue: minutesMode ? 59 : widget.maxTotalSeconds!.toDouble(),
         ),
         SizedBox(
@@ -229,6 +239,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
     required int maxDigits,
     required InputDecoration? decoration,
     required VoidCallback onChanged,
+    required FocusNode? focusNode,
     required double maxValue,
   }) {
     return SizedBox(
@@ -239,6 +250,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
         style: const TextStyle(fontSize: 30),
         textAlign: TextAlign.end,
         keyboardType: TextInputType.number,
+        focusNode: focusNode,
         inputFormatters: [
           FilteringTextInputFormatter.digitsOnly,
           NumericalRangeFormatter(min: 0, max: maxValue),
