@@ -59,3 +59,9 @@ View the [contributing documentation](./CONTRIBUTING.md). If contributing code c
 ### Code of Conduct
 
 When contributing, please keep the [Code of Conduct](./CODE_OF_CONDUCT.md) in mind.
+
+## License
+
+`unit_number_input` is open-source software released under the [MIT License](https://opensource.org/licenses/MIT). You are free to modify and distribute the application under the terms of this license. See the `LICENSE` file for more information.
+
+Please note that this README file is subject to change as the application evolves. Refer to the latest version of this file in the repository for the most up-to-date information.
