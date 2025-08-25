@@ -54,7 +54,7 @@ Check out the [example](example) directory in this repository for a complete exa
 
 ## Contributing
 
-View the [contributing documentation](./CONTRIBUTING.md). If contributing code changes, please checkout the [testing documentation](./docs/testing.md).
+View the [contributing documentation](./CONTRIBUTING.md). If contributing code changes, please checkout the [testing documentation](./doc/testing.md).
 
 ### Code of Conduct
 
