@@ -26,7 +26,7 @@ Add `unit_number_input` to your `pubspec.yaml` file:
 dependencies:
   flutter:
     sdk: flutter
-  unit_number_input: ^1.0.0
+  unit_number_input: ^0.1.0
 ```
 
 ## Basic Usage
