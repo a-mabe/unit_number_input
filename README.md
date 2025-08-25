@@ -2,16 +2,18 @@
 
 A Flutter package for entering minutes and seconds with built-in validation, auto-conversion to total seconds, and input decoration. Originally created for [OpenHIIT](https://github.com/a-mabe/OpenHIIT). Currently only handles minutes and seconds, could be expanded for other values.
 
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/92326bcd-de2b-4a4b-b7fe-13cd4b7bdde2" alt="unit_number_input GIF" width="400"/>
+</div>
+
 ---
 ## Table of Contents
 
 1. [Installation](#installation)
 1. [Basic Usage](#basic-usage)
     1. [Example Usage](#example-usage)
-1. [Advanced Configuration](#Advanced-Configuration)
 1. [Contributing](#Contributing)
     1. [Code of Conduct](#Code-of-Conduct)
-1. [Credits](#credits)
 1. [License](#license)
 
 ---
