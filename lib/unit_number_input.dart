@@ -37,6 +37,9 @@ class UnitNumberInput extends StatefulWidget {
   /// Whether the input is prefilled with the controller value.
   final bool prefill;
 
+  /// Whether the field is enabled.
+  final bool enabled;
+
   /// Callback function called when the form field is saved.
   final FormFieldSetter<int>? onSaved;
 
@@ -58,6 +61,7 @@ class UnitNumberInput extends StatefulWidget {
     this.maxSecondsDigits = 3,
     this.valueRequired = true,
     this.prefill = true,
+    this.enabled = true,
     this.onSaved,
     this.minutesFocusNode,
     this.secondsFocusNode,
@@ -190,6 +194,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
             onChanged: _updateSecondsFromControllers,
             focusNode: widget.minutesFocusNode,
             maxValue: 99,
+            enabled: widget.enabled,
           ),
         if (minutesMode)
           SizedBox(
@@ -212,6 +217,7 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
           onChanged: _updateSecondsFromControllers,
           focusNode: widget.secondsFocusNode,
           maxValue: minutesMode ? 59 : widget.maxTotalSeconds!.toDouble(),
+          enabled: widget.enabled,
         ),
         SizedBox(
           width: 20,
@@ -219,16 +225,23 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
             padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
             child: Text(
               's',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: widget.enabled ? null : Theme.of(context).disabledColor,
+              ),
             ),
           ),
         ),
         if (widget.enableMinutesToggle)
           IconButton(
             icon: Icon(minutesMode ? Icons.timer : Icons.timer_off),
-            onPressed: () {
-              widget.controller.toggleMode(); // controller drives everything
-            },
+            onPressed: widget.enabled
+                ? () {
+                    widget.controller
+                        .toggleMode(); // controller drives everything
+                  }
+                : null,
           ),
       ],
     );
@@ -241,11 +254,13 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
     required VoidCallback onChanged,
     required FocusNode? focusNode,
     required double maxValue,
+    required bool enabled,
   }) {
     return SizedBox(
       width: 20.0 * maxDigits,
       child: TextFormField(
         controller: controller,
+        enabled: enabled,
         maxLength: maxDigits,
         style: const TextStyle(fontSize: 30),
         textAlign: TextAlign.end,

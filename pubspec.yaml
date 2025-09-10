@@ -1,6 +1,6 @@
 name: unit_number_input
 description: "A Flutter package for minutes/seconds input with validation, input decoration, and conversion to total seconds."
-version: 0.1.0
+version: 0.1.1
 repository: https://github.com/a-mabe/unit_number_input
 
 funding:
