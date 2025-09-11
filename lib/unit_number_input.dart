@@ -147,8 +147,10 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
           secondsText = secondsText.substring(0, maxSecondsDigits);
         }
         secondsController.text = secondsText;
+      } else {
+        secondsController.text = '0';
       }
-      minutesController.clear();
+      minutesController.text = '0';
     }
   }
 
@@ -203,9 +205,12 @@ class _UnitNumberInputState extends State<UnitNumberInput> {
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 6),
               child: Text(
                 'm',
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
+                  color: widget.enabled
+                      ? null
+                      : Theme.of(context).disabledColor,
                 ),
               ),
             ),
