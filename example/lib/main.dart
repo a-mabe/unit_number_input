@@ -46,6 +46,8 @@ class _MyHomePageState extends State<MyHomePage> {
       UnitNumberInputController(initialSeconds: 500, startInMinutesMode: true),
       UnitNumberInputController(),
       UnitNumberInputController(initialSeconds: 45000),
+      UnitNumberInputController(),
+      UnitNumberInputController(startInMinutesMode: true),
     ];
   }
 
@@ -211,6 +213,47 @@ class _MyHomePageState extends State<MyHomePage> {
                           controller: _controllers[6],
                           enableMinutesToggle: false,
                           maxSecondsDigits: 5,
+                          onChanged: (seconds) {
+                            print("Total seconds: $seconds");
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const SizedBox(width: 20),
+                      Text('Disabled', style: TextStyle(fontSize: 16)),
+                      const Spacer(),
+                      FittedBox(
+                        fit: BoxFit.contain,
+                        child: UnitNumberInput(
+                          controller: _controllers[7],
+                          enabled: false,
+                          onChanged: (seconds) {
+                            print("Total seconds: $seconds");
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  Divider(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const SizedBox(width: 20),
+                      Text(
+                        'Disabled, minutes mode',
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      const Spacer(),
+                      FittedBox(
+                        fit: BoxFit.contain,
+                        child: UnitNumberInput(
+                          controller: _controllers[8],
+                          enabled: false,
                           onChanged: (seconds) {
                             print("Total seconds: $seconds");
                           },
